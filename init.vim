@@ -1,7 +1,6 @@
 let mapleader = " "
 
 autocmd GUIEnter * simalt ~x "full screen
-"call GuiWindowMaximized(1)
 
 
 "setting
@@ -24,34 +23,40 @@ Plug 'voldikss/vim-floaterm'
 Plug 'junegunn/goyo.vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'preservim/nerdtree'
-"Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'dhruvasagar/vim-dotoo'
 
+Plug 'cdelledonne/vim-cmake'
+
+Plug 'sonph/onehalf',{'rtp':'vim'}
 call plug#end()
 
-
-""
 let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
-set background=dark
-
+"colorscheme gruvbox
+"set background=dark
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
 
 
 "goyo with limeght
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+noremap <leader>l :Limelight<CR>
+noremap <leader>L :Limelight!<CR>
 noremap <leader>g :Goyo <CR> 
-"function
 
+"function
 fu RunCode()
 	if &filetype ==#'python'
 		 FloatermNew py %
  endif
+	if % ==#'init.vim'
+
+	endif
 endfu
+
+
 
 "calling function
 noremap <Leader>j :FloatermNew powershell<CR>
@@ -76,7 +81,7 @@ noremap <C-Tab> :bnext  <Return>
 noremap <C-S-Tab> :bprev <Return>
 noremap<Leader><Tab> :tabnext <Return>
 noremap<Leader><S-Tab> :tabprev <Return>
-noremap <Leader>e    :NERDTree <CR>
+noremap <Leader>E    :NERDTree <CR>
+noremap <Leader>e    :CocCommand explorer<CR>
 
 """TODO 
-
